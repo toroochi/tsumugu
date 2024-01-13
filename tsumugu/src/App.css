@@ -1,9 +1,30 @@
 body {
-  background-color: #f6c8c3;
+  background-color: #ece5da;
+}
+
+h1 {
+  font-family: "Paytone One";
+  color: #202020;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  line-height: 100px;
+}
+
+h1 span {
+  display: block;
+  margin: 11px 0 17px 0;
+  font-size: 130px;
+  line-height: 80px;
+  color: #f1ebe5;
+  text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #fff;
 }
 
 p {
-  color: #84382C;
+  color: #47568F;
+}
+
+.container {
+  display: flex;
 }
 
 .App {
@@ -22,7 +43,7 @@ p {
 }
 
 .App-header {
-  background-color: #f6c8c3;
+  background-color: #E9E0C9;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -30,10 +51,6 @@ p {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 .navigation{
@@ -49,7 +66,7 @@ p {
 .button{
   display: block;
   padding:10px;
-  background:#f6c8c3;
+  background:#E9E0C9;
   width:20%;
   float:left;
   /* カーソルを離した際のアニメーションの速度調整 */
