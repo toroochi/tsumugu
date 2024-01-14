@@ -4,3 +4,57 @@
     box-shadow:  20px 20px 60px #c9c3b9,
                 -20px -20px 60px #fffffb;
 }
+
+.navigation{
+    /* flexboxで要素を真ん中に指定 */
+    display: flex;
+    width: 1300px;
+    margin: 0 0 0 auto;
+
+}
+.navigation ul {
+width: 100%;
+}
+.button{
+display: block;
+padding:10px;
+background:#ece5da;
+width:20%;
+float:left;
+/* カーソルを離した際のアニメーションの速度調整 */
+transition:.2s all;
+}
+.button p {
+height: 10px;
+font-weight: 300;
+}
+.button a {
+color:#84382C;
+/* リンク指定した要素のスタイルを削除 */
+text-decoration:none;
+}
+.navigation:hover .button{
+/* ナビゲーションをマウスオーバーした際のアニメーションの動きを指定 */
+opacity:.5;
+/* 全てのボタンが少し小さくなる */
+transform: scale(.98);
+}
+.navigation:hover .button:hover{
+transition: .5s;
+/* hover時の速度調整 */
+transform:scale(1.5);
+/* hoverしたボタンのみサイズを拡大する指定 */
+opacity:1;
+}
+.navigation:hover .button:hover > p {
+font-weight: bold;
+}
+.App-header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}

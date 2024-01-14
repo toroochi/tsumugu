@@ -1,5 +1,5 @@
-import 'tsumugu/src/components/style.css';
-import 'tsumugu/src/App.css';
+import '../App.css';
+import './style.css';
 
 function App(){
     return (
@@ -21,11 +21,6 @@ function App(){
             </li>
             </ul>
         </div>
-        <header className="App-header">
-        <p>
-            Edit <code>src/App.js</code> and save to reload.
-        </p>
-        </header>
     </div>
     </body>
     );
