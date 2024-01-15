@@ -119,9 +119,6 @@ p {
   text-decoration: none;
 }
 
-.forgot-pass:hover a{
-  text-decoration: underline;
-}
 
 button{
   margin: 15px 0;
@@ -156,8 +153,5 @@ button:focus{
   text-decoration: none;
 }
 
-.signup a:hover{
-  text-decoration: underline;
-}
 
 

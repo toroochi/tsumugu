@@ -11,6 +11,9 @@ import { Route, Routes, Navigate, Link } from "react-router-dom";
 
 import Main from "./Main"
 import User from './User';
+import Home from './Main';
+import Writting from './Writting';
+import Writtingform from "./Writtingform";
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
     <Route path={`/`} element={<Main />} />
     <Route path={`/user`} element={<User />} />
     <Route path={`/register_new`} element={<RegisterForm />} />
+    <Route path={`/home`} element={<Home />} />
+    <Route path={`/writting`} element={<Writting />} />
+    <Route path={`/writtingform`} element={<Writtingform />} />
   </Routes>
   );
 }
@@ -70,7 +76,7 @@ function LoginForm() {
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
               ></input>
-              <label>Email</label>
+              {loginEmail === "" && <label>Email</label>}
             </div>
             <p></p>
             <div class="field">
@@ -81,7 +87,7 @@ function LoginForm() {
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
               ></input>
-              <label>Password</label>
+              {loginPassword === "" && <label>Password</label>}
             </div>
             <div class="forgot-pass"><a href="#">Forgot Password?</a></div>
             <button><p>Login</p></button>
@@ -144,7 +150,7 @@ function RegisterForm() {
                 value={registerEmail}
                 onChange={(e) => setRegisterEmail(e.target.value)}
               ></input>
-              <label>Email</label>
+              {registerEmail === ""&&<label>Email</label>}
             </div>
             <p></p>
             <div class="field">
@@ -155,7 +161,7 @@ function RegisterForm() {
                 value={registerPassword}
                 onChange={(e) => setRegisterPassword(e.target.value)}
               ></input>
-              <label>Password</label>
+              {registerPassword === ""&& <label>Password</label>}
             </div>
 
             <button><p>Sign up</p></button>

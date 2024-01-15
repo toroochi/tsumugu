@@ -1,4 +1,3 @@
-
 import './style.css'
 import {Link, useNavigate} from "react-router-dom";
 import React, { useState, useEffect } from "react";
@@ -27,7 +26,7 @@ const User = () => {
     return (
         <body>
             <h1>マイページ</h1>
-            <p>{user?.email}aaa</p>
+            <p>{user?.email}</p>
             {/* ↓「onClick」を追加 */}
             <button onClick={logout}>ログアウト</button>
         </body>
