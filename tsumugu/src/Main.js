@@ -7,14 +7,17 @@ import {Link, Navigate} from "react-router-dom";
 
 const Main = () => {
     const [user, setUser] = useState("");
+    const [looding, setLoading] = useState(true);
 
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
+        setLoading(false);
     });
     }, []);
 
     return (
+        !looding && (
         !user ? (
             <Navigate to={`/register`} />
         ) : (
@@ -38,6 +41,7 @@ const Main = () => {
         </div>
     </div>
     </body>
+        )
         )
     );
 }

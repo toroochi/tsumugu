@@ -60,7 +60,7 @@ function LoginForm() {
       </h1>
       <div className="right">
         <div class="content">
-          <form class="login-form">
+          <form class="login-form" onSubmit={handleSubmit}>
             <div class="text">Re:Tale Login</div>
             <div class="field">
               <span class="fas fa-user"></span>
@@ -84,7 +84,7 @@ function LoginForm() {
               <label>Password</label>
             </div>
             <div class="forgot-pass"><a href="#">Forgot Password?</a></div>
-            <button><p>Sign in</p></button>
+            <button><p>Login</p></button>
             <div class="signup">Not a member?
             <Link to="/register_new">sign up now</Link>
             </div>
