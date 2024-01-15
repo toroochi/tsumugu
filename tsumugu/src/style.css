@@ -8,7 +8,7 @@
 .navigation{
     /* flexboxで要素を真ん中に指定 */
     display: flex;
-    width: 1300px;
+    width: 1200px;
     margin: 0 0 0 auto;
 
 }
@@ -48,13 +48,4 @@ opacity:1;
 }
 .navigation:hover .button:hover > p {
 font-weight: bold;
-}
-.App-header {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
 }

@@ -1,55 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import './components/style.css';
+import './style.css';
 import {
   createUserWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
+  signInWithEmailAndPassword
 } from "firebase/auth";
 import { auth } from "./FirebaseConfig.js";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, Link } from "react-router-dom";
 
-import Register from "./App";
-import Main from "./components/Main"
+import Main from "./Main"
+import User from './User';
 
 function App() {
-  /*firebase auth新規登録変数*/
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-
-  /*firebase authログイン変数*/
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );
-    } catch(error) {
-      alert("正しく入力してください");
-    }
-  };
-
-  const [user, setUser] = useState("");
-
-  /* ↓ログインしているかどうかを判定する */
-  useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
-  }, []);
-
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path={`/register`} element={<Register />} />
-        <Route path={`/`} element={<Main />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+    <Route path={`/register`} element={<LoginForm />} />
+    <Route path={`/`} element={<Main />} />
+    <Route path={`/user`} element={<User />} />
+    <Route path={`/register_new`} element={<RegisterForm />} />
+  </Routes>
   );
 }
 
@@ -57,7 +27,32 @@ function LoginForm() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        loginEmail,
+        loginPassword
+      );
+    } catch(error) {
+      alert("メールアドレスまたはパスワードが間違っています");
+    }
+  };
+
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  });
+
   return (
+    user ? (
+      <Navigate to={`/`} />
+    ) : (
     <body>
       <h1>
         <p>　みんなと、小説を紡ぐ</p>
@@ -91,12 +86,13 @@ function LoginForm() {
             <div class="forgot-pass"><a href="#">Forgot Password?</a></div>
             <button><p>Sign in</p></button>
             <div class="signup">Not a member?
-              <a href="/register">signup now</a>
+            <Link to="/register_new">sign up now</Link>
             </div>
           </form>
         </div>
       </div>
     </body>
+    )
   );
 }
 
@@ -118,7 +114,19 @@ function RegisterForm() {
     }
   };
 
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  }, []);
+
   return (
+    user ?
+    (
+      <Navigate to={`/`} />
+    ) : (
     <body>
       <h1>
         <p>　みんなと、小説を紡ぐ</p>
@@ -152,12 +160,13 @@ function RegisterForm() {
 
             <button><p>Sign up</p></button>
             <div class="signup">
-              <a href="/login">login now</a>
+            <Link to="/register">login now</Link>
             </div>
           </form>
         </div>
       </div>
     </body>
+    )
   );
 }
 
