@@ -61,7 +61,7 @@ function LoginForm() {
     ) : (
     <body>
       <h1>
-        <p>　みんなと、小説を紡ぐ</p>
+        <p>　みんなと、小説を紡ぐ。</p>
         <span>Re:Tale</span> 
       </h1>
       <div className="right">
@@ -90,7 +90,7 @@ function LoginForm() {
               {loginPassword === "" && <label>Password</label>}
             </div>
             <div class="forgot-pass"><a href="#">Forgot Password?</a></div>
-            <button><p>Login</p></button>
+            <button>Login</button>
             <div class="signup">Not a member?
             <Link to="/register_new">sign up now</Link>
             </div>
@@ -135,7 +135,7 @@ function RegisterForm() {
     ) : (
     <body>
       <h1>
-        <p>　みんなと、小説を紡ぐ</p>
+        <p>　みんなと、小説を紡ぐ。</p>
         <span>Re:Tale</span> 
       </h1>
       <div className="right">
@@ -164,7 +164,7 @@ function RegisterForm() {
               {registerPassword === ""&& <label>Password</label>}
             </div>
 
-            <button><p>Sign up</p></button>
+            <button>Sign up</button>
             <div class="signup">
             <Link to="/register">login now</Link>
             </div>

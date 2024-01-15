@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap');
+
+
 .box {
     border-radius: 50px;
     background: #ece5da;
@@ -80,6 +83,7 @@ p {
     color: #47568F;
     text-align: center;
     font-weight: bold;
+    font-family: 'Kiwi Maru', sans-serif;
 }
 
 .inputbox {
@@ -120,4 +124,8 @@ a:not(.not)::after{
 a:not(.not):hover::after {
     transform-origin: left top;
     transform: scale(1, 1);
+}
+
+.boxmargin{
+    margin: 50px;
 }

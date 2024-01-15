@@ -9,17 +9,17 @@ const Writting = () => {
         <body>
             <div class="navigation">
                 <ul>
-                <li class="button"
-                ><p><Link to="/">Home</Link></p>
+                <li class="button">
+                    <p><Link to="/">ホーム</Link></p>
                 </li>
                 <li class="button">
-                    <p><Link to="/about">About</Link></p>
+                    <p><Link to="/about">概要</Link></p>
                 </li>
                 <li class="button">
-                    <p><Link to="/writting">Writting</Link></p>
+                    <p><Link to="/writting">執筆</Link></p>
                 </li>
                 <li class="button">
-                    <p><Link to="/user">User</Link></p>
+                    <p><Link to="/user">ユーザー設定</Link></p>
                 </li>
                 </ul>
             </div>
