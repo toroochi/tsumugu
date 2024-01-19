@@ -163,7 +163,15 @@ function RegisterForm() {
               ></input>
               {registerPassword === ""&& <label>Password</label>}
             </div>
-
+            <p></p>
+            <div className='field'>
+            <span className='fas fa-lock'></span>
+            <input 
+              type="text"
+              name='text'
+            ></input>
+            <label>UserName</label>
+            </div>
             <button>Sign up</button>
             <div class="signup">
             <Link to="/register">login now</Link>

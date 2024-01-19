@@ -23,6 +23,7 @@ const Writting = () => {
                 </li>
                 </ul>
             </div>
+            <div className='boxpadding'></div>
             <p>
                 <span class="simpleBackgroundImage">あなたが始めた物語一覧</span>
             </p>

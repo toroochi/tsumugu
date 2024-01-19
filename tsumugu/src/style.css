@@ -9,6 +9,7 @@
 }
 
 .circle {
+    
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -29,6 +30,8 @@
     display: flex;
     width: 1300px;
     margin: 0 0 0 auto;
+    position: fixed; /* ウィンドウを基準に画面に固定 */
+    top: 0; /* 上下の固定位置を上から0pxにする */
 
 }
 .navigation ul {
@@ -116,7 +119,7 @@ a:not(.not)::after{
     content: '';
     width: 100%;
     height: 1px;
-    background: #000000;
+    background: #47568F;
     transform: scale(0, 1);
     transform-origin: right top;
     transition: transform .3s;
@@ -128,4 +131,69 @@ a:not(.not):hover::after {
 
 .boxmargin{
     margin: 50px;
+}
+
+.boxpadding{
+    padding-top: 100px;
+}
+
+.editor{
+    font-family: 'Kiwi Maru', sans-serif;
+}
+
+.box29{
+	margin: 2em auto;
+	padding:5em;/*内側余白*/
+	background-image: linear-gradient(0deg, transparent 19px, #ccc 20px),linear-gradient(90deg,  transparent 19px, #ccc 20px);
+	background-size: 20px 20px;
+    background-color: #fffffb;
+    width: 700px;
+}
+
+.cp_iptxt {
+	position: relative;
+	width: 100%;
+	margin: 40px auto;
+}
+.cp_iptxt input[type='text'] {
+    text-align: center;
+    font-family: 'Kiwi Maru', sans-serif;
+    font-size: 20px;
+    background-color: #fffffb;
+	box-sizing: border-box;
+	width: 500px;
+    height: 50px;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #000;
+	border: 1px solid #ffffff;
+	box-shadow: 1px 1px 2px 0 #707070 inset;
+	border-radius: 4px;
+}
+.ef input[type='text']:focus {
+	outline: none;
+	box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+
+.centering_parent {             /* 中央寄せしたい親要素 */
+    text-align:  center;        /* 中央寄せの指定 */
+}
+
+.centering_item {             /* 中央寄せしたい要素 */
+    background-color: #FFEB3B;
+}
+
+.fixed {
+    width: 100px;
+    height: 80px;
+    position: fixed;
+    top: 50px; /* 画面上から50px */
+    left: 50px; /* 画面左から50px */
+}
+
+.savebutton{
+    position: fixed;
+    right: 30px;
+    width: 100px;
 }
