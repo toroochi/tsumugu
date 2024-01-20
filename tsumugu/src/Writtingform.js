@@ -125,7 +125,7 @@ const Writtingform = () => {
             <ToastContainer />
             <form onSubmit={onSubmit}>
             <div className='boxmargin'>
-                <div class="fixed">
+                <div className="fixed">
                 <font size="6"><Link to="/writting">◁</Link></font>
                 </div>
                 <div className='savebutton'>

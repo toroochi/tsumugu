@@ -4,7 +4,9 @@ import {Link, useNavigate} from "react-router-dom";
 import pen from "./pen.png";
 import book from "./blue.png";
 import {collection,addDoc,doc,getDoc, updateDoc,onSnapshot} from "firebase/firestore"
-import db from "./FirebaseConfig"
+import db, { auth } from "./FirebaseConfig"
+import {getAuth, useAuthState} from "firebase/auth";
+
 
 const getStrTime = (time) => {
     let t = new Date(time);
@@ -12,6 +14,8 @@ const getStrTime = (time) => {
 }
 
 const Writting = () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
     const navigate = useNavigate();
     const [posts, setPosts] = useState([]);
     const [isCompleted, setIsCompleted] = useState(false);
@@ -21,7 +25,7 @@ const Writting = () => {
             setPosts(
                 snapshot.docs
                     .map((post) => ({ ...post.data(), id: post.id }))
-                    .filter((post) => post.isCompleted === isCompleted)
+                    .filter((post) => post.isCompleted === isCompleted && post.createBy === user.uid)
                     .sort((a,b) => b.created_at - a.created_at)
             )
         })
@@ -71,7 +75,7 @@ const Writting = () => {
                         <p className='not'>{post.title}</p>
                         <img src={book} className='booksize' onClick={() => handlePostClick(post)}></img>
                     </div>
-                    <div className='created_at'>{getStrTime(post.created_at)}</div>
+                    <div className='created_at'>投稿日：{getStrTime(post.created_at)}</div>
                 </div>
             ))}
             <hr></hr>

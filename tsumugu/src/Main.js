@@ -71,7 +71,7 @@ const Main = () => {
             {posts.map((post) => (
                 <div className='post'>
                     <div className='title'>
-                        <p className='not'>{post.title}</p>
+                        <p className='not'>{post.title} {post.createBy}</p>
                         <img src={book} className='booksize' onClick={() => handlePostClick(post)}></img>
                     </div>
                     <div className='created_at'>投稿日：{getStrTime(post.created_at)}</div>
