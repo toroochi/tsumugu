@@ -4,9 +4,10 @@ import './style.css';
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  getAuth
 } from "firebase/auth";
-import { auth } from "./FirebaseConfig.js";
+import { auth} from "./FirebaseConfig";
 import { Route, Routes, Navigate, Link } from "react-router-dom";
 
 import Main from "./Main"
@@ -14,6 +15,10 @@ import User from './User';
 import Home from './Main';
 import Writting from './Writting';
 import Writtingform from "./Writtingform";
+import Edit from './Edit';
+
+import { doc, setDoc } from "firebase/firestore"; 
+import { getFirestore } from "firebase/firestore";
 
 function App() {
   return (
@@ -24,7 +29,8 @@ function App() {
     <Route path={`/register_new`} element={<RegisterForm />} />
     <Route path={`/home`} element={<Home />} />
     <Route path={`/writting`} element={<Writting />} />
-    <Route path={`/writtingform`} element={<Writtingform />} />
+    <Route path="/writtingform/:id?" element={<Writtingform />} />
+    <Route path="/edit/:id?" element={<Edit />} />
   </Routes>
   );
 }
@@ -32,6 +38,7 @@ function App() {
 function LoginForm() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [user, setUser] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,8 +53,6 @@ function LoginForm() {
       alert("メールアドレスまたはパスワードが間違っています");
     }
   };
-
-  const [user, setUser] = useState();
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -105,28 +110,46 @@ function LoginForm() {
 function RegisterForm() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [user, setUser] = useState("");
+  const [inputValue, setInputValue] = useState('');
+
+  const db = getFirestore();
+  const auth = getAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      await createUserWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
         auth,
         registerEmail,
         registerPassword
       );
+      const uid = userCredential.user.uid;
+  
+      await setDoc(doc(db, "users", uid), {
+        username: inputValue,
+      });
+  
+      setUser(userCredential.user);
     } catch(error) {
       alert("正しく入力してください");
     }
   };
+  
 
-  const [user, setUser] = useState("");
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
   }, []);
+
+  
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
   return (
     user ?
@@ -169,8 +192,10 @@ function RegisterForm() {
             <input 
               type="text"
               name='text'
+              value={inputValue}
+              onChange={handleInputChange}
             ></input>
-            <label>UserName</label>
+            {inputValue === ''&& <label>UserName</label>}
             </div>
             <button>Sign up</button>
             <div class="signup">

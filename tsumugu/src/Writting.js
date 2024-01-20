@@ -1,10 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
-import {Link} from "react-router-dom";
-import pen from "./pen.png"
+import {Link, useNavigate} from "react-router-dom";
+import pen from "./pen.png";
+import book from "./blue.png";
+import {collection,addDoc,doc,getDoc, updateDoc,onSnapshot} from "firebase/firestore"
+import db from "./FirebaseConfig"
 
+const getStrTime = (time) => {
+    let t = new Date(time);
+    return (`${t.getFullYear()}/${t.getMonth()+1}/${t.getDate()} ${t.getHours()}:${t.getMinutes()}:${t.getSeconds()}`);
+}
 
 const Writting = () => {
+    const navigate = useNavigate();
+    const [posts, setPosts] = useState([]);
+    const [isCompleted, setIsCompleted] = useState(false);
+
+    const fetchPosts = (isCompleted) => {
+        onSnapshot(collection(db, 'posts'), (snapshot) => {
+            setPosts(
+                snapshot.docs
+                    .map((post) => ({ ...post.data(), id: post.id }))
+                    .filter((post) => post.isCompleted === isCompleted)
+                    .sort((a,b) => b.created_at - a.created_at)
+            )
+        })
+    }
+    useEffect(() => {
+        fetchPosts(isCompleted);
+    }, [isCompleted]);
+    
+    const handlePostClick = (post) => {
+        if (post.isCompleted) {
+            navigate(`/appreciation/${post.id}`);
+        } else {
+            navigate(`/writtingform/${post.id}`);
+        }
+    }
+
     return (
         <body>
             <div class="navigation">
@@ -24,9 +57,23 @@ const Writting = () => {
                 </ul>
             </div>
             <div className='boxpadding'></div>
-            <p>
-                <span class="simpleBackgroundImage">あなたが始めた物語一覧</span>
-            </p>
+            <div className='centering_parent'>
+            <div className='centering_item'>
+            <button className='buttonsize' onClick={() => setIsCompleted(false)}><p>編集中の物語</p></button>
+            <button className='buttonsize' onClick={() => setIsCompleted(true)}><p>始めた物語</p></button>
+            <button className='buttonsize'><p>続いた物語</p></button>
+            </div>
+            </div>
+            <hr></hr>
+            {posts.map((post) => (
+                <div className='post'>
+                    <div className='title'>
+                        <p className='not'>{post.title}</p>
+                        <img src={book} className='booksize' onClick={() => handlePostClick(post)}></img>
+                    </div>
+                    <div className='created_at'>{getStrTime(post.created_at)}</div>
+                </div>
+            ))}
             <hr></hr>
             <div className='post-btn'>
             <Link to="/writtingform" className="not">

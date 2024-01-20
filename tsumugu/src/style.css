@@ -25,6 +25,10 @@
     height: 40px;
 }
 
+.booksize{
+    width: 100px;
+}
+
 .navigation{
     /* flexboxで要素を真ん中に指定 */
     display: flex;
@@ -32,14 +36,20 @@
     margin: 0 0 0 auto;
     position: fixed; /* ウィンドウを基準に画面に固定 */
     top: 0; /* 上下の固定位置を上から0pxにする */
+    background-color: #ece5da;
 
 }
 .navigation ul {
 width: 100%;
 }
+
+.buttonsize{
+    width: 200px;
+    float: left;
+}
+
 .button{
 display: block;
-padding:10px;
 background:#ece5da;
 width:20%;
 float:left;
@@ -82,7 +92,7 @@ font-weight: bold;
     border-radius: 50%;
 }
 
-p {
+p:not(.not) {
     color: #47568F;
     text-align: center;
     font-weight: bold;
@@ -107,7 +117,7 @@ p {
     background-image: linear-gradient(transparent 50%, #ffff01 0%);
 }
 
-a:not(.not) {
+a:not(.titleText) {
     position: relative;
     display: inline-block;
     text-decoration: none;
@@ -176,12 +186,9 @@ a:not(.not):hover::after {
 	box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 }
 
-.centering_parent {             /* 中央寄せしたい親要素 */
-    text-align:  center;        /* 中央寄せの指定 */
-}
-
-.centering_item {             /* 中央寄せしたい要素 */
-    background-color: #FFEB3B;
+.centering_parent {               /* 余白指定 */
+    display: grid;
+    place-items: center;          /* 高さ指定 */      /* 中央寄せの指定 */
 }
 
 .fixed {

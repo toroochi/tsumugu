@@ -11,12 +11,11 @@ import { auth} from "./FirebaseConfig";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Writtingform = () => {
+const Edit = () => {
     const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [postId, setPostId] = useState(null);
-    const [isCompleted, setCompleted] = useState(false);
     const location = useLocation();
     const {id} = useParams();
 
@@ -79,7 +78,7 @@ const Writtingform = () => {
         if (yesNoFlg) {
             // contentとtitleが空でないことを確認
             if (!content || !title) {
-                toast.error("内容とタイトルを入力してください。");
+                toast.error("内容を入力してください。");
                 return;
             }
     
@@ -126,28 +125,12 @@ const Writtingform = () => {
             <form onSubmit={onSubmit}>
             <div className='boxmargin'>
                 <div class="fixed">
-                <font size="6"><Link to="/writting">◁</Link></font>
-                </div>
-                <div className='savebutton'>
-                <button type='submit'>
-                    <p>保存</p>
-                </button>
+                <font size="6"><Link to="/home">◁</Link></font>
                 </div>
                 <p><h2>小説を書き始める</h2></p>
                 
                 <div className='centering_parent'>
                 <div className='editor'>
-                <div class="cp_iptxt">
-                    <label class="ef">
-                    <input 
-                    type="text" 
-                    value={title}
-                    placeholder="タイトルを入力してください" 
-                    className='centering_item' 
-                    onChange={(e) => setTitle(e.target.value)}
-                    />
-                    </label>
-                </div>
                 <div class="box29">
                 <Editor
                     editorState={editorState}
@@ -159,7 +142,6 @@ const Writtingform = () => {
                     }}
                     placeholder="本文を入力してください"
                 />
-
 
                 </div>
                 </div>
@@ -176,4 +158,4 @@ const Writtingform = () => {
     )
 }
 
-export default Writtingform;
+export default Edit;
