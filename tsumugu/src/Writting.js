@@ -14,6 +14,8 @@ const getStrTime = (time) => {
 }
 
 const Writting = () => {
+    const [selectedPosts, setSelectedPosts] = useState([]);
+
     const auth = getAuth();
     const user = auth.currentUser;
     const navigate = useNavigate();
@@ -30,13 +32,14 @@ const Writting = () => {
             )
         })
     }
+    
     useEffect(() => {
         fetchPosts(isCompleted);
     }, [isCompleted]);
     
     const handlePostClick = (post) => {
         if (post.isCompleted) {
-            navigate(`/appreciation/${post.id}`);
+            navigate(`/view/${post.id}`);
         } else {
             navigate(`/writtingform/${post.id}`);
         }
@@ -58,6 +61,9 @@ const Writting = () => {
                 <li class="button">
                     <p><Link to="/user">ユーザー設定</Link></p>
                 </li>
+                <li class="button">
+                    <p><a href='https://forms.gle/UL6gNuatsDH2mb7p6'>バグ報告</a></p>
+                </li>
                 </ul>
             </div>
             <div className='boxpadding'></div>
@@ -65,20 +71,21 @@ const Writting = () => {
             <div className='centering_item'>
             <button className='buttonsize' onClick={() => setIsCompleted(false)}><p>編集中の物語</p></button>
             <button className='buttonsize' onClick={() => setIsCompleted(true)}><p>始めた物語</p></button>
-            <button className='buttonsize'><p>続いた物語</p></button>
             </div>
             </div>
             <hr></hr>
             {posts.map((post) => (
-                <div className='post'>
-                    <div className='title'>
-                        <p className='not'>{post.title}</p>
-                        <img src={book} className='booksize' onClick={() => handlePostClick(post)}></img>
-                    </div>
-                    <div className='created_at'>投稿日：{getStrTime(post.created_at)}</div>
-                </div>
-            ))}
-            <hr></hr>
+    <div className='post' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', margin: '10px 0', paddingLeft: '20px' }}>
+        <img src={book} className='booksize' onClick={() => handlePostClick(post)} style={{ marginRight: '20px' }}></img>
+        <div>
+            <p className='not'>{post.title}</p>
+            <div className='created_at'>投稿日：{getStrTime(post.created_at)}</div>
+        </div>
+    </div>
+))}
+
+
+
             <div className='post-btn'>
             <Link to="/writtingform" className="not">
                 <button className='circle'>

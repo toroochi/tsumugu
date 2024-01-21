@@ -6,28 +6,9 @@ import otaku from './j158_9_13.png';
 import boy from './j158_7_11.png';
 
 
-const About = () => {
+const Aboutwhat = () => {
     return(
         <body>
-        <div class="navigation">
-        <ul>
-        <li class="button">
-            <p><Link to="/">ホーム</Link></p>
-        </li>
-        <li class="button">
-            <p><Link to="/about">概要</Link></p>
-        </li>
-        <li class="button">
-            <p><Link to="/writting">執筆</Link></p>
-        </li>
-        <li class="button">
-            <p><Link to="/user">ユーザー設定</Link></p>
-        </li>
-        <li class="button">
-            <p><a href='https://forms.gle/UL6gNuatsDH2mb7p6'>バグ報告</a></p>
-        </li>
-        </ul>
-    </div>
     <div className='boxpadding'></div>
     <h2><p>Re:Taleについて</p></h2>
     <hr></hr>
@@ -48,4 +29,4 @@ const About = () => {
     )
 }
 
-export default About;
+export default Aboutwhat;

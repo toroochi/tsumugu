@@ -16,6 +16,9 @@ import Home from './Main';
 import Writting from './Writting';
 import Writtingform from "./Writtingform";
 import Edit from './Edit';
+import About from './About';
+import View from './View';
+import Aboutwhat from './Whatretale';
 
 import { doc, setDoc } from "firebase/firestore"; 
 import { getFirestore } from "firebase/firestore";
@@ -31,6 +34,10 @@ function App() {
     <Route path={`/writting`} element={<Writting />} />
     <Route path="/writtingform/:id?" element={<Writtingform />} />
     <Route path="/edit/:id?" element={<Edit />} />
+    <Route path='/about' element={<About />}/>
+    <Route path="/view/:id?" element={<View />} />
+    <Route path='/whatisretale' element={<Aboutwhat />}/>
+
   </Routes>
   );
 }
@@ -69,6 +76,7 @@ function LoginForm() {
         <p>　みんなと、小説を紡ぐ。</p>
         <span>Re:Tale</span> 
       </h1>
+      <p><Link to="/whatisretale">Re:Taleについて</Link></p>
       <div className="right">
         <div class="content">
           <form class="login-form" onSubmit={handleSubmit}>
@@ -94,7 +102,6 @@ function LoginForm() {
               ></input>
               {loginPassword === "" && <label>Password</label>}
             </div>
-            <div class="forgot-pass"><a href="#">Forgot Password?</a></div>
             <button>Login</button>
             <div class="signup">Not a member?
             <Link to="/register_new">sign up now</Link>

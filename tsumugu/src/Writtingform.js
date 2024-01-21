@@ -138,6 +138,7 @@ const Writtingform = () => {
                 <div className='centering_parent'>
                 <div className='editor'>
                 <div class="cp_iptxt">
+                    <div className='inner'>
                     <label class="ef">
                     <input 
                     type="text" 
@@ -147,6 +148,7 @@ const Writtingform = () => {
                     onChange={(e) => setTitle(e.target.value)}
                     />
                     </label>
+                    </div>
                 </div>
                 <div class="box29">
                 <Editor

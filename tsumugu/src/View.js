@@ -12,8 +12,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
-const Edit = () => {
+const About = () => {
     const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
@@ -177,7 +176,7 @@ const Edit = () => {
             <form　onSubmit={handlePost}>
             <div className='boxmargin'>
                 <div class="fixed">
-                <font size="6"><Link to="/home">◁</Link></font>
+                <font size="6"><Link to="/writting">◁</Link></font>
                 </div>
                 <p><h2>小説をつなげる</h2></p>
                 <p>{title}</p>
@@ -212,4 +211,4 @@ const Edit = () => {
     )
 }
 
-export default Edit;
+export default About;

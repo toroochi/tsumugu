@@ -63,20 +63,24 @@ const Main = () => {
                 <li class="button">
                     <p><Link to="/user">ユーザー設定</Link></p>
                 </li>
+                <li class="button">
+                    <p><a href='https://forms.gle/UL6gNuatsDH2mb7p6'>バグ報告</a></p>
+                </li>
                 </ul>
             </div>
             <div className='boxpadding'></div>
-            <p>みんなの小説</p>
+            <h2><p>みんなの小説</p></h2>
             <hr></hr>
             {posts.map((post) => (
-                <div className='post'>
-                    <div className='title'>
-                        <p className='not'>{post.title} {post.createBy}</p>
-                        <img src={book} className='booksize' onClick={() => handlePostClick(post)}></img>
+                <div className='post' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', margin: '10px 0', paddingLeft: '20px' }}>
+                    <img src={book} className='booksize' onClick={() => handlePostClick(post)} style={{ marginRight: '20px' }}></img>
+                    <div>
+                        <p className='not'>{post.title}</p>
+                        <div className='created_at'>投稿日：{getStrTime(post.created_at)}</div>
                     </div>
-                    <div className='created_at'>投稿日：{getStrTime(post.created_at)}</div>
                 </div>
             ))}
+
     </div>
     </body>
         )

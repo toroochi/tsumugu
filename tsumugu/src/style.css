@@ -204,3 +204,22 @@ a:not(.not):hover::after {
     right: 30px;
     width: 100px;
 }
+
+.inner{
+    width: 80%;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.centered-and-small {
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+}
